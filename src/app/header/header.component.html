@@ -1,0 +1,21 @@
+<section class="todoapp ng-scope">
+  <header class="header">
+    <h1>todos</h1>
+    <input
+      class="new-todo ng-pristine ng-valid ng-touched"
+      placeholder="What needs to be done?"
+      [value]="text"
+      (keyup)="changeText($event)"
+      (keyup.enter)="onAddTodo()"
+    />
+  </header>
+  <section class="main ng-hide" ng-show="todos.length">
+    <input
+      id="toggle-all"
+      class="toggle-all ng-pristine ng-untouched ng-valid"
+      type="checkbox"
+    />
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list"></ul>
+  </section>
+</section>
