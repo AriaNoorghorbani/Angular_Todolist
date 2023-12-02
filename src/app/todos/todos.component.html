@@ -1,0 +1,6 @@
+<ul class="todo-list">
+  <app-todo
+    *ngFor="let todo of visibleTodos$ | async"
+    [todoProps]="todo"
+  ></app-todo>
+</ul>

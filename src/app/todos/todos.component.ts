@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { BehaviorSubject, combineLatest, filter, map, Observable } from 'rxjs';
+import { combineLatest, map, Observable } from 'rxjs';
 import { TodoService } from '../todo.service';
 import { FilterEnum } from '../types/filter.enum';
 import { Todo } from '../types/todo.interface';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss'],
+  selector: 'app-todos',
+  templateUrl: './todos.component.html',
+  styleUrls: ['./todos.component.scss'],
 })
-export class ListComponent {
+export class TodosComponent {
   visibleTodos$: Observable<Todo[]>;
 
   constructor(private todoService: TodoService) {

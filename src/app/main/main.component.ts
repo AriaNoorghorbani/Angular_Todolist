@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { combineLatest, forkJoin, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { TodoService } from '../todo.service';
-import { Todo } from '../types/todo.interface';
 
 @Component({
   selector: 'app-main',
@@ -9,9 +8,10 @@ import { Todo } from '../types/todo.interface';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-  // visibleTodos$: Observable<Todo[]>;
-
+  isVisible$: Observable<boolean>;
   constructor(private todoService: TodoService) {
-    // this.visibleTodos$.subscribe()
+    this.isVisible$ = this.todoService.todos$.pipe(
+      map((todos) => todos.length === 0)
+    );
   }
 }

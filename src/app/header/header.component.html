@@ -10,11 +10,12 @@
       autoFocus
     />
   </header>
-  <section class="main ng-hide" ng-show="todos.length">
+  <section class="main" [ngClass]="{ hidden: isVisible$ | async }">
     <input
       id="toggle-all"
       class="toggle-all ng-pristine ng-untouched ng-valid"
       type="checkbox"
+      [checked]="isAllTodoSelected$ | async"
     />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list"></ul>

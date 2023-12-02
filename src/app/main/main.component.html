@@ -1,4 +1,6 @@
 <div class="todoapp">
   <app-header></app-header>
-  <app-list></app-list>
+  <div [ngClass]="{ hidden: isVisible$ | async }">
+    <app-todos></app-todos>
+  </div>
 </div>

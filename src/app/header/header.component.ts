@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { TodoService } from '../todo.service';
+import { Todo } from '../types/todo.interface';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +10,17 @@ import { TodoService } from '../todo.service';
 })
 export class HeaderComponent {
   text = '';
+  isVisible$: Observable<boolean>;
+  isAllTodoSelected$: Observable<boolean>;
 
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService) {
+    this.isVisible$ = this.todoService.todos$.pipe(
+      map((todo) => todo.length === 0)
+    );
+    this.isAllTodoSelected$ = this.todoService.todos$.pipe(
+      map((todos) => todos.every((todo) => todo.isCompleted))
+    );
+  }
 
   changeText(event: Event) {
     const target = event.target as HTMLInputElement;
