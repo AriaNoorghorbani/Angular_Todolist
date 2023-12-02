@@ -18,5 +18,6 @@ export class HeaderComponent {
 
   onAddTodo() {
     this.todoService.addTodo(this.text);
+    this.text = '';
   }
 }

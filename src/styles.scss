@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito:wght@400;700&family=Space+Grotesk&display=swap");
+
+* {
+  font-family: "Lato", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
+}
 html,
 body {
   margin: 0;

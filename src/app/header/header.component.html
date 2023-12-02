@@ -2,11 +2,12 @@
   <header class="header">
     <h1>todos</h1>
     <input
-      class="new-todo ng-pristine ng-valid ng-touched"
+      class="new-todo"
       placeholder="What needs to be done?"
       [value]="text"
       (keyup)="changeText($event)"
       (keyup.enter)="onAddTodo()"
+      autoFocus
     />
   </header>
   <section class="main ng-hide" ng-show="todos.length">
