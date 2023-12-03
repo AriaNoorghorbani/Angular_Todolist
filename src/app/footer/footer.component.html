@@ -1,0 +1,3 @@
+<footer class="footer" [ngClass]="{ hidden: noTodosClass$ | async }">
+  {{ activeCount$ | async }}{{ itemLeftText$ | async }}
+</footer>
