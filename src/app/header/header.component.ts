@@ -31,4 +31,9 @@ export class HeaderComponent {
     this.todoService.addTodo(this.text);
     this.text = '';
   }
+
+  toggleAllTodos(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.todoService.toggleAll(target.checked);
+  }
 }

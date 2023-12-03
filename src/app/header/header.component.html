@@ -16,6 +16,7 @@
       class="toggle-all ng-pristine ng-untouched ng-valid"
       type="checkbox"
       [checked]="isAllTodoSelected$ | async"
+      (change)="toggleAllTodos($event)"
     />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list"></ul>
