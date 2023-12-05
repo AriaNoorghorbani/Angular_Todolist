@@ -1,3 +1,15 @@
 <footer class="footer" [ngClass]="{ hidden: noTodosClass$ | async }">
-  {{ activeCount$ | async }}{{ itemLeftText$ | async }}
+  <span class="todo-count">
+    <strong>{{ activeCount$ | async }}</strong>
+    {{ itemsLeftText$ | async }}
+  </span>
+  <ul class="filters">
+    <li *ngFor="let filter of filter$ | async">
+      <a
+        [ngClass]="{ selected: selectedFilter == filter }"
+        (click)="onChangeFilter($event, filter)"
+        >{{ filter }}</a
+      >
+    </li>
+  </ul>
 </footer>
