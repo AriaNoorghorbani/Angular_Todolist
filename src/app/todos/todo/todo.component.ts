@@ -23,7 +23,6 @@ export class TodoComponent implements OnInit {
   }
 
   setItemToEdit(): void {
-    console.log('a');
     this.editingId.emit(this.todoProps?.id);
   }
 
@@ -34,13 +33,14 @@ export class TodoComponent implements OnInit {
   }
 
   toggleTodo() {
-    console.log('toggle todo');
+    if (this.todoProps?.id) {
+      this.todoService.toggleTodo(this.todoProps?.id);
+    }
   }
 
   changeText(event: Event) {
     const target = event.target as HTMLInputElement;
     this.editingText = target.value;
-    console.log(target.value);
   }
 
   changeTodo() {
