@@ -1,6 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ChildActivationStart } from '@angular/router';
-import { map } from 'rxjs';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { TodoService } from 'src/app/todo.service';
 import { Todo } from 'src/app/types/todo.interface';
 
@@ -9,10 +17,11 @@ import { Todo } from 'src/app/types/todo.interface';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss'],
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnChanges {
   @Input() todoProps: Todo | undefined;
   @Input('isEditing') isEditingProps: boolean = false;
   @Output() editingId = new EventEmitter<string>();
+  @ViewChild('textInput') textInput!: ElementRef;
 
   editingText: string | undefined;
 
@@ -20,6 +29,14 @@ export class TodoComponent implements OnInit {
 
   ngOnInit() {
     this.editingText = this.todoProps?.text;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.isEditingProps) {
+      setTimeout(() => {
+        this.textInput.nativeElement.focus();
+      }, 0);
+    }
   }
 
   setItemToEdit(): void {
