@@ -33,4 +33,17 @@ export class TodoService {
   changeFilter(newFilter: FilterEnum) {
     this.filter$.next(newFilter);
   }
+
+  changeText(id: string, text: string) {
+    const updatedTodo = this.todos$.getValue().map((todo) => {
+      if (todo.id == id) {
+        return {
+          ...todo,
+          text,
+        };
+      }
+      return todo;
+    });
+    this.todos$.next(updatedTodo);
+  }
 }

@@ -1,10 +1,21 @@
 <li *ngIf="todoProps" [ngClass]="{ editing: isEditingProps }">
   <div class="view">
-    <input type="checkbox" class="toggle" />
+    <input
+      type="checkbox"
+      class="toggle"
+      [checked]="todoProps.isCompleted"
+      (click)="toggleTodo()"
+    />
     <label (dblclick)="setItemToEdit()">{{ todoProps.text }}</label>
-    <button class="destroy"></button>
+    <button class="destroy" (click)="onRemove()"></button>
   </div>
   <ng-container *ngIf="isEditingProps">
-    <input type="text" class="edit" />
+    <input
+      type="text"
+      class="edit"
+      [value]="editingText"
+      (keyup)="changeText($event)"
+      (keyup.enter)="changeTodo()"
+    />
   </ng-container>
 </li>
