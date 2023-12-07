@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChildActivationStart } from '@angular/router';
 import { map } from 'rxjs';
 import { TodoService } from 'src/app/todo.service';
 import { Todo } from 'src/app/types/todo.interface';
@@ -27,7 +28,9 @@ export class TodoComponent implements OnInit {
   }
 
   onRemove() {
-    console.log('remove');
+    if (this.todoProps?.id) {
+      this.todoService.removeTodo(this.todoProps?.id);
+    }
   }
 
   toggleTodo() {
