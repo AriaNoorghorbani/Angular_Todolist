@@ -11,6 +11,7 @@ import { Todo } from '../types/todo.interface';
 })
 export class TodosComponent {
   visibleTodos$: Observable<Todo[]>;
+  editingId: string | null = null;
 
   constructor(private todoService: TodoService) {
     this.visibleTodos$ = combineLatest([
@@ -31,5 +32,9 @@ export class TodosComponent {
     } else {
       return todos;
     }
+  }
+
+  editingIdEvent(editingId: string | null) {
+    this.editingId = editingId;
   }
 }

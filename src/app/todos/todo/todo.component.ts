@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Todo } from 'src/app/types/todo.interface';
 
 @Component({
@@ -8,4 +8,11 @@ import { Todo } from 'src/app/types/todo.interface';
 })
 export class TodoComponent {
   @Input() todoProps: Todo | undefined;
+  @Input('isEditing') isEditingProps: boolean = false;
+  @Output() editingId = new EventEmitter<string>();
+
+  setItemToEdit(): void {
+    console.log('a');
+    this.editingId.emit(this.todoProps?.id);
+  }
 }

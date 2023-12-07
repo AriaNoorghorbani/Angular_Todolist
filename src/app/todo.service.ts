@@ -18,7 +18,6 @@ export class TodoService {
     };
     const updatedTodo = [...this.todos$.getValue(), newTodo];
     this.todos$.next(updatedTodo);
-    console.log(this.todos$.getValue());
   }
 
   toggleAll(isCompleted: boolean) {
@@ -29,5 +28,9 @@ export class TodoService {
       };
     });
     this.todos$.next(updatedTodo);
+  }
+
+  changeFilter(newFilter: FilterEnum) {
+    this.filter$.next(newFilter);
   }
 }

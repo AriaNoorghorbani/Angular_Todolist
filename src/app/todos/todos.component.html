@@ -2,5 +2,7 @@
   <app-todo
     *ngFor="let todo of visibleTodos$ | async"
     [todoProps]="todo"
+    [isEditing]="editingId === todo.id"
+    (editingId)="editingIdEvent($event)"
   ></app-todo>
 </ul>

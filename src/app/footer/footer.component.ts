@@ -37,9 +37,8 @@ export class FooterComponent implements OnDestroy {
   }
 
   onChangeFilter(event: Event, filter: FilterEnum) {
-    console.log(event, filter);
     this.selectedFilter = filter;
-    console.log(this.selectedFilter);
+    this.todoService.changeFilter(filter);
   }
 
   ngOnDestroy(): void {
