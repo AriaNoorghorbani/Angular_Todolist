@@ -1,9 +1,10 @@
 <section class="todoapp ng-scope">
   <header class="header">
-    <h1>todos</h1>
+    <h1 i18n>todos</h1>
     <input
       class="new-todo"
       placeholder="What needs to be done?"
+      i18n-placeholder="From placeholder"
       [value]="text"
       (keyup)="changeText($event)"
       (keyup.enter)="onAddTodo()"
